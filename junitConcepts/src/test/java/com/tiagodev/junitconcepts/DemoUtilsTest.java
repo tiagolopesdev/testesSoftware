@@ -6,16 +6,17 @@ package com.tiagodev.junitconcepts;
 
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
-/**
- *
- * @author tiagolopes
- */
+
+@DisplayName("Test DemoUtils")
 class DemoUtilsTest {
 
     DemoUtils demoUtils;
@@ -28,7 +29,6 @@ class DemoUtilsTest {
 //    @AfterEach
 //    void setupAfterEach() {        
 //    }
-
     @Test
     @DisplayName("Test equals and not equals")
     void testEqualsAndNotEquals() {        
@@ -43,6 +43,28 @@ class DemoUtilsTest {
         String strTwo = "Tiago";
         assertNull(demoUtils.checkNull(strOne), "object should be null");
         assertNotNull(demoUtils.checkNull(strTwo), "object should not be null");
+    }    
+    @Test
+    @DisplayName("Array Equals")
+    void testArrayEquals() {
+    	String[] stringValues = {"A", "B", "C"};    	
+    	assertArrayEquals(stringValues, demoUtils.getFirstThreeLettersOfAlphabet(),
+    			"Arrays should be the same");
+    
+    }    
+    @Test
+    @DisplayName("Itarable equals")
+    void testItarableEquals() {
+    	List<String> theList = List.of("luv", "2", "code");    	
+    	assertIterableEquals(theList, demoUtils.getAcademyInList(),
+    			"Expected list should be same as list");
     }
-
+    @Test
+    @DisplayName("Lines match")
+    void testLinesMatch() {
+    	List<String> theList = List.of("luv", "2", "code");
+    	assertLinesMatch(theList, demoUtils.getAcademyInList(),
+    			"Lines should match");
+    }
+    
 }
