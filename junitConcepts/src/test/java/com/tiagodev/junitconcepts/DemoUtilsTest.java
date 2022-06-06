@@ -4,6 +4,7 @@
  */
 package com.tiagodev.junitconcepts;
 
+import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -20,6 +21,17 @@ class DemoUtilsTest {
     @BeforeEach
     void setupBeforeEach() {
         demoUtils = new DemoUtils();
+    }
+    
+    @Test
+    @DisplayName("Throws and does not throws")
+    void testThrowsAndDoesNotThrow() {
+        assertThrows(Exception.class, () -> {
+            demoUtils.throwException(-1);
+        }, "Should throw exception");
+        assertDoesNotThrow(() -> {
+            demoUtils.throwException(9);
+        }, "Should not throw exception");
     }
 
     @Test
