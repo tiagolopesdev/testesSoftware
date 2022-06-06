@@ -22,7 +22,15 @@ class DemoUtilsTest {
     void setupBeforeEach() {
         demoUtils = new DemoUtils();
     }
-    
+
+    @Test
+    @DisplayName("Timeout")
+    void testTimeout() {
+        assertTimeoutPreemptively(Duration.ofSeconds(3), () -> {
+            demoUtils.checkTimeout();
+        }, "Method should execute in 3 seconds.");
+    }
+
     @Test
     @DisplayName("Throws and does not throws")
     void testThrowsAndDoesNotThrow() {
