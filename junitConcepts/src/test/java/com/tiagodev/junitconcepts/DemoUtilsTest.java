@@ -11,9 +11,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
-@DisplayName("Test DemoUtils")
+@DisplayName("Test DemoUtils")       
+@TestMethodOrder(MethodOrderer.Random.class)
 class DemoUtilsTest {
 
     DemoUtils demoUtils;
@@ -25,6 +29,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Timeout")
+    //@Order(2)
     void testTimeout() {
         assertTimeoutPreemptively(Duration.ofSeconds(3), () -> {
             demoUtils.checkTimeout();
@@ -33,6 +38,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Throws and does not throws")
+    //@Order(1)
     void testThrowsAndDoesNotThrow() {
         assertThrows(Exception.class, () -> {
             demoUtils.throwException(-1);
@@ -44,6 +50,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Equals and not equals")
+    //@Order(-2)
     void testEqualsAndNotEquals() {
         assertEquals(6, demoUtils.add(2, 4), "2+4 must be 6");
         assertNotEquals(6, demoUtils.add(1, 9), "1+9 must not be 6");
@@ -51,6 +58,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Null and not null")
+    //@Order(5)
     void testNullAndNotNull() {
         String strOne = null;
         String strTwo = "Tiago";
