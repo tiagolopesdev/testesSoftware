@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-@DisplayName("Test DemoUtils")       
+@DisplayName("Test DemoUtils")
 @TestMethodOrder(MethodOrderer.Random.class)
 class DemoUtilsTest {
 
@@ -25,6 +25,12 @@ class DemoUtilsTest {
     @BeforeEach
     void setupBeforeEach() {
         demoUtils = new DemoUtils();
+    }
+
+    @Test
+    @DisplayName("Multiply")
+    void testMultiplay() {
+        assertEquals(4, demoUtils.multiply(2, 2), "2*2 must be 4");
     }
 
     @Test
