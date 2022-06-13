@@ -8,8 +8,7 @@ package com.tiagodev.junitconcepts;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.condition.*;
 
 /**
  *
@@ -46,4 +45,10 @@ public class ConditionalTest {
 
     }
 
+    @Test
+    @EnabledOnJre(JRE.JAVA_11)
+    @DisplayName("Metodo somente para Java 11")
+    void testOnlyForJava11(){
+        
+    }    
 }
