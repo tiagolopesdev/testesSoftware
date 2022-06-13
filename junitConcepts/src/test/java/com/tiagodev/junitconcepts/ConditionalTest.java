@@ -48,7 +48,21 @@ public class ConditionalTest {
     @Test
     @EnabledOnJre(JRE.JAVA_11)
     @DisplayName("Metodo somente para Java 11")
-    void testOnlyForJava11(){
-        
-    }    
+    void testOnlyForJava11() {
+
+    }
+
+    @Test
+    @EnabledForJreRange(min = JRE.JAVA_11, max = JRE.JAVA_17)
+    @DisplayName("Metodo min java_11 max java_17")
+    void testOnlyForJavaRange() {
+
+    }
+
+    @Test
+    @EnabledForJreRange(min = JRE.JAVA_10)
+    @DisplayName("Metodo java minimo java_10")
+    void testOnlyForJavaRangeMin() {
+
+    }
 }
