@@ -11,9 +11,11 @@ package com.tiagodev.junitconcepts.TDD;
  */
 public class FizzBuzz {
 
-    public static String divisibleThree(int i) {
+    public static String divisible(int i) {
         if (i % 3 == 0) {
             return "Fizz";
+        } else if (i % 5 == 0){
+            return "Buzz";            
         }
         return null;
     }

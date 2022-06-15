@@ -18,6 +18,13 @@ public class FizzBuzzTest {
     @DisplayName("Divisivel por 3")
     void testForDivisibleByThree() {
         String expected = "Fizz";
-        Assertions.assertEquals(expected, fizzBuzz.divisibleThree(3), "Número divisivel por 3");
+        Assertions.assertEquals(expected, fizzBuzz.divisible(3), "Número divisivel por 3");
+    }
+    
+    @Test
+    @DisplayName("Divisivel por 5")
+    void  testForDivisivelByFive(){
+        String expected = "Buzz";
+        Assertions.assertEquals(expected, fizzBuzz.divisible(5), "Número divisivel por 5");
     }
 }
