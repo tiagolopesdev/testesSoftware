@@ -12,15 +12,17 @@ package com.tiagodev.junitconcepts.TDD;
 public class FizzBuzz {
 
     public static String divisible(int i) {
-        if (i % 3 == 0  && i % 5 == 0) {
-            return "FizzBuzz";                        
-        } else if (i % 5 == 0){
-            return "Buzz";            
-        } else if (i % 3 == 0){
-            return "Fizz";
-        } else {
-            return Integer.toString(i);
+        StringBuilder builder = new StringBuilder();
+        if (i % 3 == 0) {
+            builder.append("Fizz");
         }
+        if (i % 5 == 0) {
+            builder.append("Buzz");
+        }
+        if (builder.length() == 0) {
+            builder.append(i);
+        }
+        return builder.toString();
     }
 
 }
