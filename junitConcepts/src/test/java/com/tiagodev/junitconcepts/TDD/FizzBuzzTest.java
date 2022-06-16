@@ -37,5 +37,12 @@ public class FizzBuzzTest {
         Assertions.assertEquals(expected, fizzBuzz.divisible(15),
                 "Número divisivel por 3 e 5");
     }
+    
+    @Test
+    @DisplayName("Not Divisible by three or five")
+    void testNotDivisibleByThreeOrFive(){
+        String expected = "1";        
+        Assertions.assertEquals(expected, fizzBuzz.divisible(1), "Return number");
+    }
 
 }

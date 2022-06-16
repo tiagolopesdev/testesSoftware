@@ -18,8 +18,9 @@ public class FizzBuzz {
             return "Buzz";            
         } else if (i % 3 == 0){
             return "Fizz";
+        } else {
+            return Integer.toString(i);
         }
-        return null;
     }
 
 }
