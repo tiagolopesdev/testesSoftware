@@ -108,5 +108,12 @@ public class FizzBuzzTest {
     void testMediumDataFile(int value, String expected){
         Assertions.assertEquals(expected, fizzBuzz.divisible(value));
     }
+    
+    @Order(11)
+    @ParameterizedTest(name = "Large [{0}] : expected: {1}")
+    @CsvFileSource(resources = "/large-test-data.csv")
+    void testLargeDataFile(int value, String expected){
+        Assertions.assertEquals(expected, fizzBuzz.divisible(value));
+    }
 
 }
