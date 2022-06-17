@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -55,17 +56,17 @@ public class FizzBuzzTest {
     @DisplayName("Not Divisible by three or five")
     void testNotDivisibleByThreeOrFive() {
         String expected = "1";
-        Assertions.assertEquals(expected, fizzBuzz.divisible(1), 
+        Assertions.assertEquals(expected, fizzBuzz.divisible(1),
                 "Return number");
     }
-        
-    @Order(5)    
+
+    @Order(5)
     @ParameterizedTest(name = "[{index}] @ValueSource: {arguments}")
     @ValueSource(ints = {1, 4, 8, 9})
-    void testWithValueSource(int arguments){        
+    void testWithValueSource(int arguments) {
         assertTrue(arguments > 0 && arguments < 10);
     }
-    
+
     @Order(6)
     @ParameterizedTest(name = "[{index}] @CsvSource: {arguments}")
     @CsvSource({
@@ -74,11 +75,11 @@ public class FizzBuzzTest {
         "'lemon, lime', 8",
         "strawberry,    7"
     })
-    void testWithCsvSource(String fruit, String rank){
+    void testWithCsvSource(String fruit, String rank) {
         Assertions.assertNotNull(fruit);
         Assertions.assertNotEquals(0, rank);
     }
-    
+
     @Order(7)
     @ParameterizedTest(name = "[{0}] : expected: {1}")
     @CsvSource({
@@ -90,7 +91,15 @@ public class FizzBuzzTest {
         "6,Fizz",
         "7,7"
     })
-    void testWithCsvSource(int value, String expected){
+    void testWithCsvSource(int value, String expected) {
         Assertions.assertEquals(expected, fizzBuzz.divisible(value));
     }
+
+    @Order(9)
+    @ParameterizedTest(name = "[{0}] : expected: {1}")
+    @CsvFileSource(resources = "/small-test-data.csv")
+    void testSmallDataFile(int value, String expected){
+        Assertions.assertEquals(expected, fizzBuzz.divisible(value));
+    }
+
 }
