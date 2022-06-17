@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -58,11 +59,23 @@ public class FizzBuzzTest {
                 "Return number");
     }
         
-    @Order(5)
-    @DisplayName("Test @ValueSource")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 4, 8, 4, 9})
-    void testValueSource(int arguments){        
+    @Order(5)    
+    @ParameterizedTest(name = "Test{index} @ValueSource: {arguments}")
+    @ValueSource(ints = {1, 4, 8, 9})
+    void testWithValueSource(int arguments){        
         assertTrue(arguments > 0 && arguments < 10);
+    }
+    
+    @Order(6)
+    @ParameterizedTest(name = "Test{index} @CsvSource: {arguments}")
+    @CsvSource({
+        "apple,         1",
+        "banana,        2",
+        "'lemon, lime', 8",
+        "strawberry,    7"
+    })
+    void testWithCsvSource(String fruit, String rank){
+        Assertions.assertNotNull(fruit);
+        Assertions.assertNotEquals(0, rank);
     }
 }
