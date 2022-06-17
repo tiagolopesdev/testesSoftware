@@ -60,14 +60,14 @@ public class FizzBuzzTest {
     }
         
     @Order(5)    
-    @ParameterizedTest(name = "Test{index} @ValueSource: {arguments}")
+    @ParameterizedTest(name = "[{index}] @ValueSource: {arguments}")
     @ValueSource(ints = {1, 4, 8, 9})
     void testWithValueSource(int arguments){        
         assertTrue(arguments > 0 && arguments < 10);
     }
     
     @Order(6)
-    @ParameterizedTest(name = "Test{index} @CsvSource: {arguments}")
+    @ParameterizedTest(name = "[{index}] @CsvSource: {arguments}")
     @CsvSource({
         "apple,         1",
         "banana,        2",
@@ -77,5 +77,20 @@ public class FizzBuzzTest {
     void testWithCsvSource(String fruit, String rank){
         Assertions.assertNotNull(fruit);
         Assertions.assertNotEquals(0, rank);
+    }
+    
+    @Order(7)
+    @ParameterizedTest(name = "[{0}] : expected: {1}")
+    @CsvSource({
+        "1,1",
+        "2,2",
+        "3,Fizz",
+        "4,4",
+        "5,Buzz",
+        "6,Fizz",
+        "7,7"
+    })
+    void testWithCsvSource(int value, String expected){
+        Assertions.assertEquals(expected, fizzBuzz.divisible(value));
     }
 }
