@@ -1,12 +1,15 @@
 package com.tiagodev.junitconcepts.TDD;
 
 import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("FizzBuzz test")
@@ -51,6 +54,15 @@ public class FizzBuzzTest {
     @DisplayName("Not Divisible by three or five")
     void testNotDivisibleByThreeOrFive() {
         String expected = "1";
-        Assertions.assertEquals(expected, fizzBuzz.divisible(1), "Return number");
+        Assertions.assertEquals(expected, fizzBuzz.divisible(1), 
+                "Return number");
+    }
+        
+    @Order(5)
+    @DisplayName("Test @ValueSource")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 4, 8, 4, 9})
+    void testValueSource(int arguments){        
+        assertTrue(arguments > 0 && arguments < 10);
     }
 }
