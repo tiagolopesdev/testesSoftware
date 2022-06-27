@@ -9,6 +9,7 @@ import springBootUnitTest.models.CollegeStudent;
 import springBootUnitTest.models.StudentGrades;
 
 @SpringBootTest(classes = SpringUnitTesteApplication.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)        
 class SpringUnitTesteApplicationTests {
 
     CollegeStudent collegeStudent;
@@ -25,9 +26,19 @@ class SpringUnitTesteApplicationTests {
     }
 
     @Test
+    @Order(1)
     @DisplayName("Add grade results for student grades")
     void testAddGradeResultsForStudent() {
         Assertions.assertEquals(353.25, studentGrades
+                .addGradeResultsForSingleClass(collegeStudent
+                        .getStudentGrades().getMathGradeResults()));
+    }
+    
+    @Test
+    @Order(2)
+    @DisplayName("Add grade results for student grades not equals")
+    void testAddGradeResultsForStudentNotEquals() {
+        Assertions.assertNotEquals(0, studentGrades
                 .addGradeResultsForSingleClass(collegeStudent
                         .getStudentGrades().getMathGradeResults()));
     }
