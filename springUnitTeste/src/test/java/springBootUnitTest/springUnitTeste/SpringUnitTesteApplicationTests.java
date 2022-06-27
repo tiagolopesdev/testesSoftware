@@ -51,4 +51,19 @@ class SpringUnitTesteApplicationTests {
                 .addGradeResultsForSingleClass(studentGrades
                         .getMathGradeResults()) > 300.0);
     }
+    
+    @Test
+    @Order(4)
+    @DisplayName("Method isGradeGreater true")
+    void testIsGradeGreaterTrue(){
+        Assertions.assertTrue(studentGrades.isGradeGreater(90, 70),
+                "Parametro 1 menor que parametro 2.");
+    }
+    
+    @Test
+    @Order(5)
+    @DisplayName("Method isGradeGreater false")
+    void testIsGradeGreaterFalse(){
+        Assertions.assertFalse(studentGrades.isGradeGreater(40, 70));
+    }
 }
