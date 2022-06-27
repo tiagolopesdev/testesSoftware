@@ -1,6 +1,7 @@
 package springBootUnitTest.models;
 
 public class CollegeStudent implements Student {
+
     private String firstname;
     private String lastname;
     private String emailAddress;
@@ -9,11 +10,11 @@ public class CollegeStudent implements Student {
     public CollegeStudent() {
     }
 
-    public CollegeStudent(String firstname, String lastname,
-            String emailAddress) {
+    public CollegeStudent(String firstname, String lastname, String emailAddress, StudentGrades studentGrades) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.emailAddress = emailAddress;
+        this.studentGrades = studentGrades;
     }
 
     public String getFirstname() {
@@ -50,12 +51,12 @@ public class CollegeStudent implements Student {
 
     @Override
     public String toString() {
-        return "CollegeStudent{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", studentGrades=" + studentGrades +
-                '}';
+        return "CollegeStudent{"
+                + "firstname='" + firstname + '\''
+                + ", lastname='" + lastname + '\''
+                + ", emailAddress='" + emailAddress + '\''
+                + ", studentGrades=" + studentGrades
+                + '}';
     }
 
     @Override

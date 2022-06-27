@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import springBootUnitTest.models.CollegeStudent;
+import springBootUnitTest.models.StudentGrades;
 
 @SpringBootApplication
 public class SpringUnitTesteApplication {
@@ -17,5 +18,11 @@ public class SpringUnitTesteApplication {
     @Scope(value = "prototype")
     CollegeStudent getCollegeStudent(){
         return new CollegeStudent();
+    }
+    
+    @Bean(name = "studentGrades")
+    @Scope(value = "prototype")
+    StudentGrades getStudentGrades(){
+        return new StudentGrades();
     }
 }
