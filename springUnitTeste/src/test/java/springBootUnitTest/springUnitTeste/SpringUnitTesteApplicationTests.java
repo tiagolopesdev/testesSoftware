@@ -42,4 +42,13 @@ class SpringUnitTesteApplicationTests {
                 .addGradeResultsForSingleClass(collegeStudent
                         .getStudentGrades().getMathGradeResults()));
     }
+            
+    @Test
+    @Order(3)
+    @DisplayName("Add grade results for student grades True")
+    void testAddGradeResultsForStudentTrue() {
+        Assertions.assertTrue(collegeStudent.getStudentGrades()
+                .addGradeResultsForSingleClass(studentGrades
+                        .getMathGradeResults()) > 300.0);
+    }
 }
