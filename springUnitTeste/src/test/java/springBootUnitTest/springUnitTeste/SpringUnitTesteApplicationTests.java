@@ -92,5 +92,18 @@ class SpringUnitTesteApplicationTests {
         CollegeStudent collegeStudentTwo = context.getBean("collegeStudent",
                 CollegeStudent.class);        
         Assertions.assertNotSame(collegeStudentTwo, collegeStudent);
-    }   
+    }  
+    
+    @Test
+    @DisplayName("Find grade point average")
+    void findGradePointAverage(){
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(353.25, studentGrades
+                        .addGradeResultsForSingleClass(collegeStudent
+                                .getStudentGrades().getMathGradeResults())),
+                () -> Assertions.assertEquals(88.31, studentGrades
+                        .findGradePointAverage(collegeStudent
+                                .getStudentGrades().getMathGradeResults()))
+        );
+    }
 }
