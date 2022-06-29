@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import springBootUnitTest.models.CollegeStudent;
 import springBootUnitTest.models.StudentGrades;
 
@@ -16,6 +17,9 @@ class SpringUnitTesteApplicationTests {
 
     @Autowired
     StudentGrades studentGrades;
+    
+    @Autowired
+    ApplicationContext context;
 
     @BeforeEach
     void setup() {
@@ -66,4 +70,19 @@ class SpringUnitTesteApplicationTests {
     void testIsGradeGreaterFalse(){
         Assertions.assertFalse(studentGrades.isGradeGreater(40, 70));
     }
+    
+    @Test
+    @DisplayName("Create student without grade init")
+    void createStudentWithoutGradesInit(){
+        CollegeStudent student = context.getBean("collegeStudent", 
+                CollegeStudent.class);        
+        student.setFirstname("Lucas");
+        student.setLastname("Silva");
+        student.setEmailAddress("lucasSilva@gmail.com");
+        Assertions.assertNotNull(student.getFirstname());
+        Assertions.assertNotNull(student.getLastname());
+        Assertions.assertNotNull(student.getEmailAddress());
+        Assertions.assertNull(studentGrades
+                .checkNull(student.getStudentGrades()));        
+    }    
 }
