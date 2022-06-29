@@ -84,5 +84,13 @@ class SpringUnitTesteApplicationTests {
         Assertions.assertNotNull(student.getEmailAddress());
         Assertions.assertNull(studentGrades
                 .checkNull(student.getStudentGrades()));        
-    }    
+    }   
+    
+    @Test
+    @DisplayName("Verify students are prototypes")
+    void verifyStudentsArePrototypes(){
+        CollegeStudent collegeStudentTwo = context.getBean("collegeStudent",
+                CollegeStudent.class);        
+        Assertions.assertNotSame(collegeStudentTwo, collegeStudent);
+    }   
 }
