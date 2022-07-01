@@ -6,8 +6,8 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import springBootUnitTest.models.CollegeStudent;
-import springBootUnitTest.models.StudentGrades;
+import springBootUnitTest.springUnitTeste.models.CollegeStudent;
+import springBootUnitTest.springUnitTeste.models.StudentGrades;
 
 @SpringBootTest(classes = SpringUnitTesteApplication.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)        

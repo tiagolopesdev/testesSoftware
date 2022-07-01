@@ -1,4 +1,4 @@
-package springBootUnitTest.models;
+package springBootUnitTest.springUnitTeste.models;
 
 import org.springframework.stereotype.Component;
 

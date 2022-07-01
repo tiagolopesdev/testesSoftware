@@ -1,4 +1,4 @@
-package springBootUnitTest.models;
+package springBootUnitTest.springUnitTeste.models;
 
 public interface Student {
 
