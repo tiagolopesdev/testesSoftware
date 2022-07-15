@@ -73,4 +73,13 @@ public class MockAnnotationTest {
             collegeStudent.getStudentGrades().getMathGradeResults()));
     }
     
+    @Test
+    @DisplayName("Not Null")
+    void assertNotNull(){
+        Mockito.when(applicationDao.checkNull(studentGrades
+                .getMathGradeResults())).thenReturn(true);
+        Assertions.assertNotNull(applicationService.checkNull(collegeStudent
+                .getStudentGrades().getMathGradeResults()));
+    }
+    
 }
