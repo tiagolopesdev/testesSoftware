@@ -4,8 +4,6 @@
  */
 package springBootUnitTest.springUnitTeste;
 
-import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +14,7 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.verify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.web.servlet.MvcResult;
 import springBootUnitTest.springUnitTeste.dao.ApplicationDao;
@@ -39,10 +38,10 @@ public class MockAnnotationTest {
     @Autowired
     StudentGrades studentGrades;
     
-    @Mock
+    @MockBean
     private ApplicationDao applicationDao;
     
-    @InjectMocks
+    @Autowired
     private ApplicationService applicationService;
     
     @BeforeEach
@@ -61,8 +60,17 @@ public class MockAnnotationTest {
                         .getStudentGrades().getMathGradeResults()));
         verify(applicationDao).addGradeResultsForSingleClass(studentGrades
                 .getMathGradeResults());
-        verify(applicationDao, Mockito.times(3)).addGradeResultsForSingleClass(
+        verify(applicationDao, Mockito.times(1)).addGradeResultsForSingleClass(
                 studentGrades.getMathGradeResults());
+    }
+    
+    @Test
+    @DisplayName("Find GPA")
+    void assertEqualsFindGpa(){
+        Mockito.when(applicationDao.findGradePointAverage(studentGrades
+                .getMathGradeResults())).thenReturn(90.0);
+        Assertions.assertEquals(90.0, applicationService.findGradePointAverage(
+            collegeStudent.getStudentGrades().getMathGradeResults()));
     }
     
 }
