@@ -2,6 +2,7 @@ package springBootUnitTest.springUnitTeste.models;
 
 public class CollegeStudent implements Student {
 
+    private long id;    
     private String firstname;
     private String lastname;
     private String emailAddress;
@@ -48,7 +49,15 @@ public class CollegeStudent implements Student {
     public void setStudentGrades(StudentGrades studentGrades) {
         this.studentGrades = studentGrades;
     }
+        
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+    
     @Override
     public String toString() {
         return "CollegeStudent{"
@@ -67,5 +76,9 @@ public class CollegeStudent implements Student {
     @Override
     public String getFullName() {
         return getFirstname() + " " + getLastname();
+    }
+    
+    private String getFirstNameAndId() {
+        return getFirstname()+" "+getLastname()+" tem o id: "+getId();
     }
 }
