@@ -46,5 +46,6 @@ public class RefletionTestUtilsTest {
     @Test
     void caseTestFieldClass() {
         Assertions.assertEquals(1L, ReflectionTestUtils.getField(collegeStudent, "id"));
+        Assertions.assertNotEquals(1, ReflectionTestUtils.getField(collegeStudent, "id"));        
     }  
 }
