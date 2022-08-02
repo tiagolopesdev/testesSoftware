@@ -37,7 +37,8 @@ public class RefletionTestUtilsTest {
         ReflectionTestUtils.setField(collegeStudent, "id", 1L);
         ReflectionTestUtils.setField(collegeStudent, "firstname", "Tiago");
         ReflectionTestUtils.setField(collegeStudent, "lastname", "Lopes");
-        ReflectionTestUtils.setField(collegeStudent, "emailAddress", "tiagolopes@gmail.com");
+        ReflectionTestUtils.setField(collegeStudent, "emailAddress", 
+                "tiagolopes@gmail.com");
         ReflectionTestUtils.setField(collegeStudent, "studentGrades",
                 new StudentGrades(new ArrayList<>(Arrays.asList(
                         100.0, 85.0, 76.50, 91.75))));
@@ -45,7 +46,16 @@ public class RefletionTestUtilsTest {
     
     @Test
     void caseTestFieldClass() {
-        Assertions.assertEquals(1L, ReflectionTestUtils.getField(collegeStudent, "id"));
-        Assertions.assertNotEquals(1, ReflectionTestUtils.getField(collegeStudent, "id"));        
+        Assertions.assertEquals(1L, ReflectionTestUtils.getField(
+                collegeStudent, "id"));
+        Assertions.assertNotEquals(1, ReflectionTestUtils.getField(
+                collegeStudent, "id"));        
     }  
+    
+    @Test 
+    void caseTestMethodClass() {
+        Assertions.assertEquals("Tiago Lopes tem o id: "+1L,
+                ReflectionTestUtils.invokeMethod(collegeStudent,
+                        "getFirstNameAndId"));
+    }
 }
