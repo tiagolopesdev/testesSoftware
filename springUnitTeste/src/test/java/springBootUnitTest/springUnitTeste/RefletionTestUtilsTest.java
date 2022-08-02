@@ -33,7 +33,7 @@ public class RefletionTestUtilsTest {
     StudentGrades studentGrades;
 
     @BeforeEach
-    void seUp() {           
+    void seUp() {              
         ReflectionTestUtils.setField(collegeStudent, "id", 1L);
         ReflectionTestUtils.setField(collegeStudent, "firstname", "Tiago");
         ReflectionTestUtils.setField(collegeStudent, "lastname", "Lopes");
@@ -49,7 +49,7 @@ public class RefletionTestUtilsTest {
         Assertions.assertEquals(1L, ReflectionTestUtils.getField(
                 collegeStudent, "id"));
         Assertions.assertNotEquals(1, ReflectionTestUtils.getField(
-                collegeStudent, "id"));        
+                collegeStudent, "id")); 
     }  
     
     @Test 
@@ -57,5 +57,7 @@ public class RefletionTestUtilsTest {
         Assertions.assertEquals("Tiago Lopes tem o id: "+1L,
                 ReflectionTestUtils.invokeMethod(collegeStudent,
                         "getFirstNameAndId"));
+        Assertions.assertTrue(ReflectionTestUtils.invokeMethod(collegeStudent,
+                "getFirstNameAndId").equals("Tiago Lopes tem o id: 1"));        
     }
 }
