@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package springBootUnitTest.springUnitTeste;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.util.ReflectionTestUtils;
+
 import springBootUnitTest.springUnitTeste.models.CollegeStudent;
 import springBootUnitTest.springUnitTeste.models.StudentGrades;
 
-/**
- *
- * @author tiagolopes
- */
+
 @SpringBootTest(classes = SpringUnitTesteApplication.class)
 public class RefletionTestUtilsTest {
 
